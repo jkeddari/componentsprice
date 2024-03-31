@@ -1,0 +1,35 @@
+package view
+
+import "goth/model"
+
+/*
+	<option value="us">amazon.com</option>
+	<option value="uk">amazon.co.uk</option>
+	<option value="de">amazon.de</option>
+	<option value="es">amazon.es</option>
+	<option value="ca">amazon.ca</option>
+	<option value="au">amazon.com.au</option>
+	<option value="in">amazon.in</option>
+	<option value="se">amazon.se</option>
+
+*/
+
+templ sideBar(categories []model.Category) {
+	<div class="sidebar">
+		<fieldset id="locales">
+			<legend for="products-select">Source</legend>
+			<select name="data-source" id="data-select">
+				<option value="fr">amazon.fr</option>
+			</select>
+		</fieldset>
+		<fieldset id="locales">
+			<legend for="products-select">Products</legend>
+			<select name="products-source" id="products-select">
+				<option value="accessories">accessories</option>
+			</select>
+		</fieldset>
+		<ul>
+			<li><a href="/about">About</a></li>
+		</ul>
+	</div>
+}

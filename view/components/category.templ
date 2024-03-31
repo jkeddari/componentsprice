@@ -1,0 +1,16 @@
+package components
+
+import "goth/model"
+
+templ Category(props model.Category) {
+	<fieldset id="filter">
+		<legend>
+			<label><input type="checkbox" data-category="optical"/>{ props.Name }</label>
+		</legend>
+		for _, field := range props.Fields {
+			<div class="product_type">
+				<label><input type="checkbox" class="filter" data-category="optical" data-product-type="bdrw"/>{ field.Name }</label>
+			</div>
+		}
+	</fieldset>
+}

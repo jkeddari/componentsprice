@@ -1,0 +1,9 @@
+services:
+  componentsprice:
+    image: ghcr.io/jkeddari/componentsprice:main
+    ports:
+      - 443:443
+    environment:
+      - PORT=443
+      - CERTIFICATE_PATH=/certs/cert.crt
+      - CERTIFICATE_KEY_PATH=/certs/cert.key
