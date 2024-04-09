@@ -2,11 +2,11 @@ templ:
 	templ generate -watch -proxy=http://localhost:3000
 
 dev:
-	make templ &
-	go build -o ./tmp/$(APP_NAME) ./cmd/$(APP_NAME)/main.go && air
+	templ &
+	air &
 
 build:
-	make templ-generate && go build -o ./bin/$(APP_NAME) ./cmd/$(APP_NAME)/main.go
+	make templ-generate && go build -o ./build/$(APP_NAME) ./cmd/$(APP_NAME)/main.go
 
 
 docker:

@@ -1,0 +1,10 @@
+package view
+
+import "goth/model"
+
+templ ContentView(items model.Items) {
+	<div class="content flex flex-1" id="contents" name="contents">
+		// @sideBar()
+		@ProductView(items)
+	</div>
+}

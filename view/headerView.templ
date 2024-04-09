@@ -1,0 +1,37 @@
+package view
+
+templ searchBar() {
+	<div class="header-level-2 bg-gray-200 py-2 px-4 flex justify-between items-center">
+		<div class="affiliate-info text-xs text-gray-700 ">
+			<h2 class="font-bold text-base text-slate-600">
+				As an Amazon Associate, I earn from qualifying purchases.
+			</h2>
+		</div>
+		<div class="search-bar flex items-center">
+			<form action="#" method="get">
+				<input class="py-2 px-3 rounded-md border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-xs" type="text" placeholder="Search..."/>
+				<input class="py-2 px-4 bg-indigo-600 text-white rounded-md ml-2 hover:bg-indigo-700 transition duration-200" type="submit" value="Search"/>
+			</form>
+		</div>
+	</div>
+}
+
+// TODO : fix list
+templ header(sourceList, productsType []string) {
+	<div class=" bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-4 px-8 flex justify-between items-center shadow-md ">
+		<div class="logo font-bold tracking-tight text-4xl">ComponentsPrice</div>
+		<div class="flex items-center space-x-4">
+			<select class="text-sm text-black bg-gray-200 px-3 py-1 rounded-md focus:outline-none focus:ring focus:ring-indigo-300" name="source" id="source" hx-get="/products" hx-vals='{"source": {source}, "productType": {productType}}' hx-target="#contents" hx-swap="outerHTML" hx-include="[name='productType']">
+				for _, source := range sourceList {
+					<option value={ source }>{ source }</option>
+				}
+			</select>
+			<select class="text-sm text-black bg-gray-200 px-3 py-1 rounded-md focus:outline-none focus:ring focus:ring-indigo-300" name="productType" id="productType" hx-get="/products" hx-vals='{ "source": {source}, "productType": {productType} }' hx-target="#contents" hx-swap="outerHTML" hx-include="[name='source']">
+				for _, t := range productsType {
+					<option value={ t }>{ t }</option>
+				}
+			</select>
+		</div>
+	</div>
+	@searchBar()
+}
