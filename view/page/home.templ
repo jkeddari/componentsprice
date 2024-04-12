@@ -1,0 +1,13 @@
+package page
+
+import "github.com/jkeddari/componentsprice/model"
+import "github.com/jkeddari/componentsprice/view/layout"
+import "github.com/jkeddari/componentsprice/view/header"
+import "github.com/jkeddari/componentsprice/view/products"
+
+templ Home(title string, data model.Data) {
+	@layout.Base(title) {
+		@header.Show(data.SourceList, data.ProductType)
+		@products.Show(data.Items["amazon.fr"]["CPU"])
+	}
+}

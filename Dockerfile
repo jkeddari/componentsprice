@@ -10,4 +10,5 @@ RUN CGO_ENABLED=0 go build -o bin/ ./...
 FROM gcr.io/distroless/static-debian11
 COPY --from=build /app/bin/server /server
 COPY --from=build /app/cert /certs
+COPY --from=build /app/static /static
 CMD ["/server"]

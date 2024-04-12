@@ -1,10 +1,11 @@
 package handlers
 
 import (
-	"goth/model"
-	"goth/view"
 	"log"
 	"net/http"
+
+	"github.com/jkeddari/componentsprice/model"
+	"github.com/jkeddari/componentsprice/view/page"
 )
 
 type HomeHandler struct {
@@ -16,7 +17,7 @@ func NewHomeHandler(d *model.Data) *HomeHandler {
 }
 
 func (h *HomeHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	err := view.Layout("Components Price", *h.data).Render(r.Context(), w)
+	err := page.Home("Components Price", *h.data).Render(r.Context(), w)
 	if err != nil {
 		log.Println(err)
 		http.Error(w, "Error rendering template", http.StatusInternalServerError)

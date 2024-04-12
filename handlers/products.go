@@ -1,9 +1,10 @@
 package handlers
 
 import (
-	"goth/model"
-	"goth/view"
 	"net/http"
+
+	"github.com/jkeddari/componentsprice/model"
+	"github.com/jkeddari/componentsprice/view/products"
 )
 
 type ProductsHandler struct {
@@ -18,9 +19,9 @@ func (h *ProductsHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	source := r.FormValue("source")
 	productType := r.FormValue("productType")
 
-	products := h.Data.Items[source][productType]
+	productsList := h.Data.Items[source][productType]
 
-	err := view.ContentView(products).Render(r.Context(), w)
+	err := products.Show(productsList).Render(r.Context(), w)
 	if err != nil {
 		http.Error(w, "Error rendering template", http.StatusInternalServerError)
 		return

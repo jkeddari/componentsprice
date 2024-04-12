@@ -1,0 +1,64 @@
+package header
+
+templ selectBanner(sourceList, productsType []string) {
+	<div class="bg-gray-200 py-1">
+		<div class="mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+			<div class="flex-1"></div>
+			<div class="text-center">
+				<span class="text-gray-800 text-sm font-medium">As an Amazon Associate, I earn from qualifying purchases.</span>
+			</div>
+			<div class="flex-1 flex justify-end">
+				<select
+					class="rounded-md py-1 px-2 border border-gray-300 mr-4 text-sm"
+					name="source"
+					id="source"
+					hx-get="/products"
+					hx-vals='{"source": {source}, "productType": {productType}}'
+					hx-target="#products-list"
+					hx-swap="outerHTML"
+					hx-include="[name='productType']"
+				>
+					for _, source := range sourceList {
+						<option value={ source }>{ source }</option>
+					}
+				</select>
+				<select
+					class="rounded-md py-1 px-2 border border-gray-300 text-sm"
+					name="productType"
+					id="productType"
+					hx-get="/products"
+					hx-vals='{ "source": {source}, "productType": {productType} }'
+					hx-target="#products-list"
+					hx-swap="outerHTML"
+					hx-include="[name='source']"
+				>
+					for _, t := range productsType {
+						<option value={ t }>{ t }</option>
+					}
+				</select>
+			</div>
+		</div>
+	</div>
+}
+
+templ titleHeader() {
+	<header class="bg-white shadow-md">
+		<div class="mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="flex justify-between h-auto items-center py-4 flex-col sm:flex-row">
+				<div class="text-gray-800 mb-4 sm:mb-0">
+					<img src="static/logo.png" alt="Logo ComponentsPrice" class="h-10 w-auto"/>
+					// <p class="text-xs text-gray-600">As an Amazon Associate, I earn from qualifying purchases.</p>
+				</div>
+				<nav class="flex">
+					<a href="#" class="text-gray-600 hover:text-gray-800 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">About</a>
+					<a href="#" class="text-gray-600 hover:text-gray-800 hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+				</nav>
+			</div>
+		</div>
+	</header>
+}
+
+templ Show(sourceList, productsType []string) {
+	@selectBanner(sourceList, productsType)
+	@titleHeader()
+}

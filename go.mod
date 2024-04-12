@@ -1,4 +1,4 @@
-module goth
+module github.com/jkeddari/componentsprice
 
 go 1.22.1
 

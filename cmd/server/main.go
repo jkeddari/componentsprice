@@ -1,11 +1,12 @@
 package main
 
 import (
-	"goth/handlers"
-	"goth/model"
 	"log/slog"
 	"net/http"
 	"os"
+
+	"github.com/jkeddari/componentsprice/handlers"
+	"github.com/jkeddari/componentsprice/model"
 )
 
 var data = model.Data{
@@ -63,6 +64,11 @@ var data = model.Data{
 						URL:   "https://amzn.to/3TWuzZw",
 						Price: "1.99 €",
 					},
+					{
+						Name:  "Câble iPhone USB C 3M [Certifié Apple MFi], Câble USB C vers Lightning 3M Long Nylon Cable iPhone Charge Rapide Cable Lightning USB C Cordon Fil Chargeur pour iPhone 14 Pro Max/14 Plus/13/12/11/X/8/SE",
+						URL:   "https://amzn.to/3xBIICY",
+						Price: "9.99 €",
+					},
 				},
 			},
 		},
@@ -83,6 +89,9 @@ func main() {
 	}
 
 	r := http.NewServeMux()
+
+	fileServer := http.FileServer(http.Dir("./static"))
+	r.Handle("GET /static/*", http.StripPrefix("/static/", fileServer))
 
 	r.HandleFunc("GET /", handlers.NewHomeHandler(&data).ServeHTTP)
 	r.HandleFunc("GET /about", handlers.NewAboutHandler().ServeHTTP)
