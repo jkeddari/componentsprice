@@ -1,5 +1,30 @@
 package page
 
-templ About() {
-	<p>About page content</p>
+import "github.com/jkeddari/componentsprice/view/layout"
+import "github.com/jkeddari/componentsprice/view/header"
+
+templ show() {
+	<div class="w-full my-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+		<h2 class="text-xl font-semibold text-gray-800">About ComponentsPrice</h2>
+		<p class="mt-4 text-gray-600">
+			ComponentsPrice is an simple price comparison website dedicated to helping 
+			consumers find the best prices for computer components on various Amazon 
+			platforms across the globe. As an Amazon Associate, we earn from qualifying 
+			purchases through our affiliate links.
+		</p>
+		<p class="mt-2 text-gray-600">
+			Established in 2023, our platform uses Product Advertising API to ensure that 
+			you have access to the most up-to-date and accurate product information. 
+			Our product list is updated every 4 hours and support multiple Amazon sources (amazon.fr, amazon.us, amazon.it, etc...). 
+			Whether you're looking to build a new PC or upgrade your existing hardware, 
+			ComponentsPrice is your go-to resource for making informed choices and saving money.
+		</p>
+	</div>
+}
+
+templ About(title string) {
+	@layout.Base(title) {
+		@header.Show(nil, nil)
+		@show()
+	}
 }

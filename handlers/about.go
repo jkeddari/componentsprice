@@ -13,7 +13,7 @@ func NewAboutHandler() *AboutHandLer {
 }
 
 func (h *AboutHandLer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	err := page.About().Render(r.Context(), w)
+	err := page.About("About - Componentsprice").Render(r.Context(), w)
 	if err != nil {
 		http.Error(w, "Error rendering template", http.StatusInternalServerError)
 		return
