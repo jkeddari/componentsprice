@@ -7,7 +7,7 @@ templ product(item model.Item, fields []string) {
 		<td class="py-2 px-4 text-left overflow-hidden">
 			<a class="text-sky-600 font-bold underline" href={ item.URL }>{ item.Name }</a>
 		</td>
-		<td class="py-2 px-4 text-left whitespace-nowrap">{ item.Price }</td>
+		<td class="py-2 px-4 text-left whitespace-nowrap">{ model.PriceToString(item.Price) }</td>
 		for _, field := range fields {
 			<td class="py-2 px-4 text-left whitespace-nowrap">{ item.Fields[field] }</td>
 		}

@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/jkeddari/componentsprice/model"
-	"github.com/jkeddari/componentsprice/view/page"
+	"github.com/jkeddari/componentsprice/views/page"
 )
 
 type HomeHandler struct {
@@ -18,6 +18,9 @@ func NewHomeHandler(d *model.Data) *HomeHandler {
 
 func (h *HomeHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	err := page.Home("Components Price", *h.data).Render(r.Context(), w)
+
+	log.Println("new connection :", r.RemoteAddr, " | on agent :", r.UserAgent())
+
 	if err != nil {
 		log.Println(err)
 		http.Error(w, "Error rendering template", http.StatusInternalServerError)

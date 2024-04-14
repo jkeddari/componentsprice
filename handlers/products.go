@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/jkeddari/componentsprice/model"
-	"github.com/jkeddari/componentsprice/view/products"
+	"github.com/jkeddari/componentsprice/views/products"
 )
 
 type ProductsHandler struct {

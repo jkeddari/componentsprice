@@ -3,7 +3,7 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/jkeddari/componentsprice/view/page"
+	"github.com/jkeddari/componentsprice/views/page"
 )
 
 type AboutHandLer struct{}

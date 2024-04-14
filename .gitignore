@@ -1,4 +1,5 @@
 bin
 tmp
 *_templ.txt
+*_templ.go
 build
